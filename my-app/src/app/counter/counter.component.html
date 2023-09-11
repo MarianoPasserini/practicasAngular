@@ -1,0 +1,11 @@
+<ul>
+  <li *ngFor="let component of pcComponents; let i = index">
+    {{ component.name }} {{ counters[i] }}
+    <button class="m-2" *ngIf="counters[i] < 10" (click)="changeStatus(i, 1)">+1</button>
+    <button *ngIf="counters[i] > 0" (click)="changeStatus(i, -1)">-1</button>
+    <ng-container *ngIf="component.option1 && component.option2">
+      <button class="btn btn-primary m-2" (click)="buttonBehavior(i, component.option1)" [disabled]="selectedOptions[i] === component.option1">{{ component.option1 }}</button>
+      <button class="btn btn-danger" (click)="buttonBehavior(i, component.option2)" [disabled]="selectedOptions[i] === component.option2">{{ component.option2 }}</button>
+    </ng-container>
+  </li>
+</ul>
